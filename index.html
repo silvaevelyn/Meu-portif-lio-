@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Portfólio de Evelyn: formação acadêmica, cursos e competências em administração, tecnologia e análise de dados.">
+  <title>Evelyn — Portfólio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #222620;
+      --muted: #6d716a;
+      --paper: #f7f5f0;
+      --white: #fffefa;
+      --green: #35483b;
+      --green-light: #e8ece5;
+      --orange: #c77954;
+      --line: #e8e5dc;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    .topbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 25px;
+      letter-spacing: -.7px;
+    }
+    .brand span { color: var(--orange); }
+    .nav { display: flex; align-items: center; gap: 34px; }
+    .nav a {
+      text-decoration: none;
+      font-size: 13px;
+      color: #555a52;
+      transition: color .2s ease;
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--orange); }
+    .nav .nav-contact {
+      border: 1px solid #c9c8be;
+      border-radius: 999px;
+      padding: 11px 18px;
+    }
+    .hero {
+      min-height: 600px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 64px;
+      padding: 68px 0 76px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--orange);
+    }
+    h1 {
+      max-width: 560px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(62px, 8vw, 100px);
+      font-weight: 400;
+      letter-spacing: -5px;
+      line-height: .98;
+    }
+    h1 em { color: var(--green); font-weight: 400; }
+    .hero-copy {
+      max-width: 455px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      background: var(--green);
+      color: white;
+      font-size: 13px;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #28392d; }
+    .button.secondary { background: transparent; color: var(--green); }
+    .button.secondary:hover { background: var(--green-light); }
+    .button svg { width: 15px; height: 15px; }
+    .portrait-wrap { position: relative; width: min(100%, 410px); justify-self: end; }
+    .portrait-frame {
+      position: relative;
+      z-index: 1;
+      height: 465px;
+      overflow: hidden;
+      border-radius: 210px 210px 12px 12px;
+      background: #ded8ca;
+    }
+    .portrait-frame::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(180deg, transparent 62%, rgb(26 32 26 / 17%));
+      pointer-events: none;
+    }
+    .portrait-frame img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 34%; }
+    .portrait-accent {
+      position: absolute;
+      z-index: 0;
+      inset: 22px -20px -18px 22px;
+      border: 1px solid #c8c1b1;
+      border-radius: 210px 210px 12px 12px;
+    }
+    .portrait-note {
+      position: absolute;
+      z-index: 2;
+      right: -42px;
+      bottom: 36px;
+      width: 128px;
+      height: 128px;
+      display: grid;
+      place-content: center;
+      border: 7px solid var(--paper);
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+    .portrait-note strong { font-family: var(--serif); font-size: 29px; font-weight: 400; }
+    .portrait-note span { margin-top: 3px; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
+    .section { padding: 94px 0; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 38px;
+    }
+    .section-heading .eyebrow { margin-bottom: 15px; }
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 54px);
+      font-weight: 400;
+      letter-spacing: -1.8px;
+      line-height: 1.08;
+    }
+    .section-intro { max-width: 345px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .education { background: var(--white); }
+    .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .education-card {
+      min-height: 190px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fffefa;
+    }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+    }
+    .card-icon svg { width: 19px; height: 19px; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #7c9b72; }
+    .education-card h3 { margin: 24px 0 7px; font-size: 17px; font-weight: 600; }
+    .education-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .courses { background: var(--paper); }
+    .course-list { border-top: 1px solid #dcd9d0; }
+    .course-row {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      align-items: center;
+      gap: 18px;
+      min-height: 86px;
+      border-bottom: 1px solid #dcd9d0;
+    }
+    .course-number { color: #a2a197; font-family: var(--serif); font-size: 17px; }
+    .course-name { margin: 0; font-size: 15px; font-weight: 500; line-height: 1.5; }
+    .course-hours { color: var(--green); font-size: 12px; white-space: nowrap; }
+    .course-hours.no-hours { color: var(--muted); }
+    .closing {
+      padding: 72px 0;
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+    .closing .eyebrow { justify-content: center; color: #e4e9df; }
+    .closing h2 { max-width: 650px; margin: 0 auto; font-size: clamp(36px, 5vw, 52px); }
+    .closing p { max-width: 490px; margin: 18px auto 0; color: #d8dfd6; font-size: 14px; line-height: 1.8; }
+    footer { padding: 23px 0; background: #29392e; color: #d8dfd6; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    footer a { text-decoration: none; }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .topbar { height: 70px; }
+      .nav { gap: 17px; }
+      .nav a { font-size: 12px; }
+      .nav .nav-contact { padding: 9px 12px; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 46px; padding: 65px 0 76px; }
+      .hero-copy { font-size: 15px; }
+      .portrait-wrap { width: min(78%, 370px); justify-self: center; margin-right: 14px; }
+      .portrait-frame { height: min(112vw, 430px); }
+      .portrait-note { right: -36px; width: 112px; height: 112px; }
+      .section { padding: 70px 0; }
+      .section-heading { align-items: start; flex-direction: column; gap: 17px; margin-bottom: 28px; }
+      .education-grid { grid-template-columns: 1fr; }
+      .education-card { min-height: 170px; }
+    }
+    @media (max-width: 430px) {
+      .nav { gap: 12px; }
+      .nav a { font-size: 11px; }
+      .brand { font-size: 23px; }
+      .nav .nav-contact { padding: 8px 10px; }
+      h1 { letter-spacing: -3px; }
+      .course-row { grid-template-columns: 34px 1fr auto; gap: 10px; min-height: 80px; }
+      .course-name { font-size: 13px; }
+      .course-hours { font-size: 11px; }
+      .footer-inner { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#inicio" aria-label="Evelyn, início">Evelyn<span>.</span></a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#formacao">Formação</a>
+      <a href="#cursos">Cursos</a>
+      <a class="nav-contact" href="#sobre">Sobre mim</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="shell hero" id="inicio" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Portfólio pessoal</p>
+        <h1 id="hero-title">Olá, sou<br><em>Evelyn.</em></h1>
+        <p class="hero-copy">Estou construindo minha trajetória acadêmica na área de Administração e ampliando meus conhecimentos em tecnologia, dados e ferramentas digitais.</p>
+        <div class="hero-actions">
+          <a class="button" href="#formacao">
+            Conheça minha trajetória
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="button secondary" href="#cursos">Ver cursos</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait-frame">
+          <img src="galeria/WhatsApp%20Image%202026-10-16%20at%2014.52.26.jpeg" alt="Foto de Evelyn">
+        </div>
+        <div class="portrait-accent" aria-hidden="true"></div>
+        <div class="portrait-note" aria-label="Em constante aprendizado">
+          <strong>Em</strong>
+          <span>constante<br>aprendizado</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="education section" id="formacao" aria-labelledby="education-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Minha jornada</p>
+            <h2 id="education-title">Formação<br>acadêmica</h2>
+          </div>
+          <p class="section-intro">Uma base em construção, com aprendizado contínuo e foco no desenvolvimento de novos conhecimentos.</p>
+        </div>
+        <div class="education-grid">
+          <article class="education-card">
+            <div class="card-top">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="m3 9 9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 11.3V16c2.8 2.3 7.2 2.3 10 0v-4.7M21 9v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="status">Em andamento</span>
+            </div>
+            <h3>Ensino Médio</h3>
+            <p>2º ano em andamento</p>
+          </article>
+          <article class="education-card">
+            <div class="card-top">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12M8 20v-5h8v5M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="status">Em andamento</span>
+            </div>
+            <h3>Itinerário Formativo em Administração</h3>
+            <p>Formação complementar em andamento</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses section" id="cursos" aria-labelledby="courses-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Conhecimento na prática</p>
+            <h2 id="courses-title">Cursos realizados</h2>
+          </div>
+          <p class="section-intro">Cursos que complementam minha formação e ampliam minhas habilidades em informática, análise de dados e empreendedorismo.</p>
+        </div>
+        <div class="course-list">
+          <article class="course-row">
+            <span class="course-number">01</span>
+            <h3 class="course-name">Operador de Microcomputador</h3>
+            <span class="course-hours">160 horas</span>
+          </article>
+          <article class="course-row">
+            <span class="course-number">02</span>
+            <h3 class="course-name">Power BI</h3>
+            <span class="course-hours">32 horas</span>
+          </article>
+          <article class="course-row">
+            <span class="course-number">03</span>
+            <h3 class="course-name">Implantação de Redes Locais</h3>
+            <span class="course-hours">48 horas</span>
+          </article>
+          <article class="course-row">
+            <span class="course-number">04</span>
+            <h3 class="course-name">Excel Básico com Inteligência Artificial Generativa</h3>
+            <span class="course-hours no-hours">Concluído</span>
+          </article>
+          <article class="course-row">
+            <span class="course-number">05</span>
+            <h3 class="course-name">Primeiro Emprego com Ênfase em Empreendedorismo</h3>
+            <span class="course-hours no-hours">Concluído</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="sobre" aria-labelledby="closing-title">
+      <div class="shell">
+        <p class="eyebrow">Um pouco sobre mim</p>
+        <h2 id="closing-title">Aprendendo hoje,<br>preparando o amanhã.</h2>
+        <p>Sou estudante e acredito que cada experiência de aprendizado é um passo importante para construir novas possibilidades.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© 2026 Evelyn. Portfólio pessoal.</span>
+      <a href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
